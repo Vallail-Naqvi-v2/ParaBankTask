@@ -18,7 +18,6 @@ test("Parabank End-to-End Test", async ({ page }) => {
 
   // Login
   await test.step("Login", async () => {
-    await loginPage.goto();
     await page.waitForLoadState("networkidle");
     await loginPage.login("vallail", "vallail1");
     await page.waitForLoadState("networkidle");

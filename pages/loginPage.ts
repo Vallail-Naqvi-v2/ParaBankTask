@@ -1,28 +1,52 @@
-import { Page, expect } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
+
+/**
+ * @author Vallail N
+ */
 
 export class LoginPage {
   readonly page: Page;
-  readonly usernameInput = 'input[name="username"]';
-  readonly passwordInput = 'input[name="password"]';
-  //   readonly loginButton = 'button:text("Log In")';
-  readonly logoutLink = 'a:text("Log Out")';
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly logoutLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.usernameInput = page.locator('input[name="username"]');
+    this.passwordInput = page.locator('input[name="password"]');
+    this.logoutLink = page.locator("text=Log Out");
   }
 
-  async goto() {
-    await this.page.goto("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC");
+  /**
+   * Goin to url
+   * @param url The url of the website
+   */
+  async goTo(url: string): Promise<void> {
+    await this.page.goto(url, { timeout: 300000 });
+    await this.page.waitForLoadState("networkidle");
   }
-
+  /**
+   * @param username takes username as an argument
+   * @param password takes password as an argument
+   */
   async login(username: string, password: string) {
-    await this.page.fill(this.usernameInput, username);
-    await this.page.fill(this.passwordInput, password);
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
     await this.page.getByRole("button", { name: "Log In" }).click();
     // await this.page.click(this.loginButton);
   }
+  /**
+   * @returns the page url
+   */
+  async pageUrlCorrect() {
+    const currentUrl = this.page.url();
+    return currentUrl;
+  }
 
+  /**
+   * @returns true if the verify login is successful
+   */
   async verifyLoginSuccess() {
-    await expect(this.page.locator(this.logoutLink)).toBeVisible();
+    return this.logoutLink.isVisible();
   }
 }
