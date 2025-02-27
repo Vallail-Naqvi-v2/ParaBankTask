@@ -11,5 +11,9 @@ test("Login page tests", async ({ page }) => {
     expect(page.url()).toBe(USER_DATA.Url);
   });
 
-  await page.pause();
+  await test.step("Verify user is able to login to the website", async () => {
+    await loginPage.login(USER_DATA.Username, USER_DATA.Password);
+    const currentUrl = await loginPage.verifyLoginSuccess();
+    expect(currentUrl).toBe(true);
+  });
 });

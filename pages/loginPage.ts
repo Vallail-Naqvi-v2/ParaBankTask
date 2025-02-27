@@ -35,18 +35,11 @@ export class LoginPage {
     await this.page.getByRole("button", { name: "Log In" }).click();
     // await this.page.click(this.loginButton);
   }
-  /**
-   * @returns the page url
-   */
-  async pageUrlCorrect() {
-    const currentUrl = this.page.url();
-    return currentUrl;
-  }
 
   /**
-   * @returns true if the verify login is successful
+   * @returns true if the login is successful, otherwise false
    */
-  async verifyLoginSuccess() {
-    return this.logoutLink.isVisible();
+  async verifyLoginSuccess(): Promise<boolean> {
+    return await this.logoutLink.isVisible(); // Ensure the function waits for the result
   }
 }
