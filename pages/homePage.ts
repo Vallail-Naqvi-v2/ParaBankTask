@@ -1,34 +1,51 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
+
+/**
+ * @author Vallail N
+ */
 
 export class HomePage {
   readonly page: Page;
+  readonly openNewAccountButton: Locator;
+  readonly updateProfileButton: Locator;
+  readonly accountsOverviewButton: Locator;
+  readonly billPayButton: Locator;
+  readonly requestLoadButton: Locator;
+  readonly logOutButton: Locator;
+  //readonly transferFundsButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.updateProfileButton = page.getByRole("link", { name: "Update Contact Info" });
+    this.openNewAccountButton = page.getByRole("link", { name: "Open New Account" });
+    this.accountsOverviewButton = page.getByRole("link", { name: "Accounts Overview" });
+    this.billPayButton = page.getByRole("link", { name: "Bill Pay" });
+    this.requestLoadButton = page.getByRole("link", { name: "Request Loan" });
+    this.logOutButton = page.getByRole("link", { name: "Log Out" });
   }
 
   async goToUpdateProfile() {
-    await this.page.getByRole("link", { name: "Update Contact Info" }).click();
+    await this.updateProfileButton.click();
   }
 
   async goToOpenNewAccount() {
-    await this.page.getByRole("link", { name: "Open New Account" }).click();
+    await this.openNewAccountButton.click();
   }
 
   async goToAccountsOverview() {
-    await this.page.getByRole("link", { name: "Accounts Overview" }).click();
+    await this.accountsOverviewButton.click();
   }
 
   async goToBillPay() {
-    await this.page.getByRole("link", { name: "Bill Pay" }).click();
+    await this.billPayButton.click();
   }
 
   async goToRequestLoan() {
-    await this.page.getByRole("link", { name: "Request Loan" }).click();
+    await this.requestLoadButton.click();
   }
 
   async logout() {
-    await this.page.getByRole("link", { name: "Log Out" }).click();
+    await this.logOutButton.click();
   }
 
   async goToTransferFunds() {

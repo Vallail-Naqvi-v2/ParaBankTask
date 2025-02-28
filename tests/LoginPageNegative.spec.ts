@@ -12,9 +12,8 @@ test("Login page tests", async ({ page }) => {
   });
 
   await test.step("Verify user is able to login to the website", async () => {
-    await loginPage.login(USER_DATA.Username, USER_DATA.Password);
-    const logoutbutton = await loginPage.verifyLoginSuccess();
-    expect(logoutbutton).toBe(true);
-    expect(page.url()).toBe(USER_DATA.LoginUrl);
+    await loginPage.login("Wrong Username", "Wrong password");
+    const currentLogin = await loginPage.verifyLoginSuccess();
+    expect(currentLogin).toBe(false);
   });
 });

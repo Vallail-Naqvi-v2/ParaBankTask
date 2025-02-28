@@ -40,6 +40,8 @@ export class LoginPage {
    * @returns true if the login is successful, otherwise false
    */
   async verifyLoginSuccess(): Promise<boolean> {
-    return await this.logoutLink.isVisible(); // Ensure the function waits for the result
+    await this.page.waitForLoadState("networkidle");
+    const currentUrl = await this.logoutLink.isVisible();
+    return currentUrl;
   }
 }
