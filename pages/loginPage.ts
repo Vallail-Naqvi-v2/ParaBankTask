@@ -9,12 +9,14 @@ export class LoginPage {
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly logoutLink: Locator;
+  readonly registerButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.usernameInput = page.locator('input[name="username"]');
     this.passwordInput = page.locator('input[name="password"]');
     this.logoutLink = page.locator("text=Log Out");
+    this.registerButton = page.locator("text=Register");
   }
 
   /**
@@ -43,5 +45,9 @@ export class LoginPage {
     await this.page.waitForLoadState("networkidle");
     const currentUrl = await this.logoutLink.isVisible();
     return currentUrl;
+  }
+  async goToRegisteration() {
+    await this.registerButton.isVisible();
+    await this.registerButton.click();
   }
 }
