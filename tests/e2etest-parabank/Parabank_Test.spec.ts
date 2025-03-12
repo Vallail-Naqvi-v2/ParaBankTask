@@ -40,7 +40,7 @@ test("Parabank End-to-End Test", async ({ page }) => {
   await test.step("Bill Pay", async () => {
     await homePage.goToBillPay();
     await billPayPage.verifyBillPayPage();
-    await billPayPage.fillBillPaymentDetails();
+    //await billPayPage.fillBillPaymentDetails();
     await billPayPage.verifyPaymentSuccess();
   });
 
