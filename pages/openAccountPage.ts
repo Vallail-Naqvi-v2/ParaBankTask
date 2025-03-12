@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class OpenAccountPage {
   readonly page: Page;
@@ -7,14 +7,16 @@ export class OpenAccountPage {
     this.page = page;
   }
 
+  // Method to open a new account
   async openNewAccount(accountType: string) {
-    await this.page.locator('#type').selectOption(accountType);
-    await this.page.waitForTimeout(1000);
-    await this.page.getByRole('button', { name: 'Open New Account' }).click();
+    await this.page.locator("#type").selectOption(accountType);
+    await this.page.waitForTimeout(1000); // Consider replacing this with a better wait method
+    await this.page.getByRole("button", { name: "Open New Account" }).click();
   }
 
-  async verifyAccountOpened() {
-    await this.page.waitForSelector("#newAccountId");
-    await expect(this.page.getByRole('heading', { name: 'Account Opened!' })).toBeVisible();
+  // Method to wait for the account to open
+  async waitForAccountOpened() {
+    await this.page.waitForSelector("#newAccountId"); // Ensure the new account ID is available
+    await this.page.waitForSelector('h1:has-text("Account Opened!")'); // Wait for the heading text
   }
 }

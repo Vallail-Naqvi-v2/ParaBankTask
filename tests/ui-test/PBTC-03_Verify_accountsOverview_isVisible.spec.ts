@@ -19,7 +19,6 @@ test("Verify Accounts Overview page is Visible", async ({ page }) => {
 
   await test.step("Verify Accounts Overview is Visible", async () => {
     await homePage.goToAccountsOverview();
-    await page.pause();
     // Get all rows in the table
     const rows = await accountsOverViewPage.getTableRows();
     const rowCount = await rows.count();
