@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { LoginPage } from "../Pages/loginPage";
-import { USER_DATA } from "../utils";
+import { LoginPage } from "../../Pages/loginPage";
+import { USER_DATA } from "../../utils";
 
-test("Login page tests", async ({ page }) => {
+test("PBTC-01 | Verify User is able to login", async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step("Verify URL of the login page", async () => {

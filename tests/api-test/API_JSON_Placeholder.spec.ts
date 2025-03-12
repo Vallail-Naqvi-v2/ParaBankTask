@@ -1,5 +1,5 @@
 import { test, expect, request, APIRequestContext } from "@playwright/test";
-import { USER_DATA } from "../utils";
+import { USER_DATA } from "../../utils";
 
 let apiContext: APIRequestContext;
 
