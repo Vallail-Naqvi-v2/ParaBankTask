@@ -12,7 +12,7 @@ export class HomePage {
   readonly billPayButton: Locator;
   readonly requestLoadButton: Locator;
   readonly logOutButton: Locator;
-  //readonly transferFundsButton: Locator;
+  readonly transferFundsButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -22,6 +22,7 @@ export class HomePage {
     this.billPayButton = page.getByRole("link", { name: "Bill Pay" });
     this.requestLoadButton = page.getByRole("link", { name: "Request Loan" });
     this.logOutButton = page.getByRole("link", { name: "Log Out" });
+    this.transferFundsButton = page.getByRole("link", { name: "Transfer Funds" });
   }
 
   async goToUpdateProfile() {
@@ -49,6 +50,6 @@ export class HomePage {
   }
 
   async goToTransferFunds() {
-    await this.page.click('a[href="/parabank/transfer.htm"]');
+    await this.transferFundsButton.click();
   }
 }

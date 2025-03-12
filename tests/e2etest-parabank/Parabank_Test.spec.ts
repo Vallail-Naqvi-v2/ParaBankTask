@@ -5,7 +5,7 @@ import { UpdateProfilePage } from "../../Pages/updateProfilePage";
 import { OpenAccountPage } from "../../Pages/openAccountPage";
 import { BillPayPage } from "../../Pages/billPayPage";
 import { RequestLoanPage } from "../../Pages/requestLoanPage";
-import { TransferFundsPage } from "../../pages/TransferFundsPage";
+import { TransferFundsPage } from "../../pages/transferFundsPage";
 
 test("Parabank End-to-End Test", async ({ page }) => {
   const transferFundsPage = new TransferFundsPage(page);
