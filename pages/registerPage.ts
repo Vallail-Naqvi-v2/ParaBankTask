@@ -32,7 +32,7 @@ export class RegisterPage {
     this.usernameInput = page.locator('input[name="customer.username"]');
     this.passwordInput = page.locator('input[name="customer.password"]');
     this.repeatedPasswordInput = page.locator('input[name="repeatedPassword"]');
-    this.submitButton = page.locator('input[type="submit"]');
+    this.submitButton = page.locator('input[type="submit"][value="Register"]');
   }
   async fillRegistrationForm({
     firstName,
