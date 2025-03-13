@@ -5,7 +5,7 @@ import { BillPayPage } from "../../Pages/billPayPage";
 import fs from "fs";
 import { HomePage } from "../../Pages/homePage";
 
-test("Verify User is able to create a new account", async ({ page }) => {
+test("PBTC-06 | Verify Bills payments ", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const billPayPage = new BillPayPage(page);
   const homePage = new HomePage(page);

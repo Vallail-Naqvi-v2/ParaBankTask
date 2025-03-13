@@ -4,7 +4,7 @@ import { USER_DATA } from "../../utils";
 import { HomePage } from "../../Pages/homePage";
 import { TransferFundsPage } from "../../pages/transferFundsPage";
 
-test("Verify User is able to create a new account", async ({ page }) => {
+test("PBTC-05 | Verify transfer funds page", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
   const transferFundsPage = new TransferFundsPage(page);

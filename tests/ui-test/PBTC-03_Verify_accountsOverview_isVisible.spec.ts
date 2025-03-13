@@ -4,7 +4,7 @@ import { USER_DATA } from "../../utils";
 import { AccountsOverviewPage } from "../../pages/accountsOverviewPage";
 import { HomePage } from "../../Pages/homePage";
 
-test("Verify Accounts Overview page is Visible", async ({ page }) => {
+test("PBTC-03 | Verify Accounts Overview page is Visible", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
   const accountsOverViewPage = new AccountsOverviewPage(page);

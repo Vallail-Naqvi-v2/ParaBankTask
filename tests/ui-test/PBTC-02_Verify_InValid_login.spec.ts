@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
 import { USER_DATA } from "../../utils";
 
-test("Login page tests", async ({ page }) => {
+test("PBTC-02 | Verify login with invalid username and password", async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await test.step("Verify URL of the login page", async () => {

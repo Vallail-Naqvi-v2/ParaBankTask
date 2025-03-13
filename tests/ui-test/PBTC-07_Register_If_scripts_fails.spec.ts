@@ -4,7 +4,7 @@ import { USER_DATA } from "../../utils";
 import { RegisterPage } from "../../pages/registerPage";
 import fs from "fs";
 
-test("PBTC-01 | Verify User is able to login", async ({ page }) => {
+test.skip("PBTC-08 | Test to register a new user into the website", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const registerPage = new RegisterPage(page);
   await test.step("Register a new user", async () => {
