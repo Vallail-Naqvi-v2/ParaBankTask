@@ -11,19 +11,27 @@ export class AccountsOverviewPage {
   constructor(page: Page) {
     this.accountTable = page.locator("#accountTable");
   }
-  // Function to get all table rows
+
+  /**
+   * @returns {Locator} The rows of the account table
+   */
   async getTableRows() {
-    return this.accountTable.locator("tbody tr"); // Get all rows in tbody
+    return this.accountTable.locator("tbody tr");
   }
 
-  // Function to get cell values of a specific row
+  /**
+   * @param {number} rowIndex - The row index
+   * @returns {Locator} The cells of the row at the specified index
+   */
   async getRowCells(rowIndex: number) {
-    const rows = await this.getTableRows(); // Await the rows first
-    const row = rows.nth(rowIndex); // Then access the nth row
-    return row.locator("td").allTextContents(); // Get the text contents of all cells
+    const rows = await this.getTableRows();
+    const row = rows.nth(rowIndex);
+    return row.locator("td").allTextContents();
   }
 
-  // Function to get the footer text
+  /**
+   * @returns {string|null} The text content of the footer
+   */
   async getFooterText() {
     return this.accountTable.locator("tfoot tr td").textContent();
   }

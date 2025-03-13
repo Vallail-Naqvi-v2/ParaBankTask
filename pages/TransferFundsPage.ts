@@ -20,10 +20,18 @@ export class TransferFundsPage {
     this.successMessage = page.locator("#rightPanel:has-text('Transfer Complete!')");
   }
 
-  async transferFunds(amount: string, fromAccount: string, toAccount: string) {
+  async transferFunds(amount: string, fromAccountIndex: string, toAccountIndex: string) {
     await this.amount.fill(amount);
-    await this.fromAccount.selectOption({ value: fromAccount });
-    await this.toAccount.selectOption({ value: toAccount });
+    const fromAccountOptions = this.fromAccount.locator("option");
+    const fromAccountCount = await fromAccountOptions.count();
+    if (parseInt(fromAccountIndex) <= fromAccountCount) {
+      await this.fromAccount.selectOption({ index: parseInt(fromAccountIndex) - 1 });
+    }
+    const toAccountOptions = this.toAccount.locator("option");
+    const toAccountCount = await toAccountOptions.count();
+    if (parseInt(toAccountIndex) <= toAccountCount) {
+      await this.toAccount.selectOption({ index: parseInt(toAccountIndex) - 1 });
+    }
     await this.submitButton.click();
   }
 

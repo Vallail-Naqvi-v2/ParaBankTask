@@ -19,7 +19,7 @@ test("PBTC-05 | Verify transfer funds page", async ({ page }) => {
 
   await test.step("Go to the transfer funds tab", async () => {
     await homePage.goToTransferFunds();
-    await transferFundsPage.transferFunds("1000", "16341", "21114");
+    await transferFundsPage.transferFunds("1000", "1", "1");
     await transferFundsPage.verifyTransferSuccess();
     const successMessage = await page.locator("#rightPanel:has-text('Transfer Complete!')");
     await expect(successMessage).toBeVisible();

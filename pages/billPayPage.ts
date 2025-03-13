@@ -31,6 +31,7 @@ export class BillPayPage {
   constructor(page: Page) {
     this.page = page;
 
+    // Initialize locators for the bill payment page elements
     this.sendPaymentButton = page.locator('input[type="button"][value="Send Payment"]');
     this.billPayLink = page.locator('a[name="Bill Pay"]');
     this.payeeNameInput = page.locator('input[name="payee.name"]');
@@ -45,10 +46,17 @@ export class BillPayPage {
     this.paymentSuccessHeading = page.locator('h1:has-text("Bill Payment Complete")');
   }
 
+  /**
+   * Verifies if the bill payment page is loaded by checking the visibility of the "Send Payment" button.
+   */
   async verifyBillPayPage() {
     await expect(this.sendPaymentButton).toBeVisible();
   }
 
+  /**
+   * Fills out the bill payment form with provided payment details and submits the form.
+   * @param paymentDetails - Contains the payment information to be filled in the form.
+   */
   async fillBillPaymentDetails(paymentDetails: BillPaymentDetails) {
     await this.payeeNameInput.fill(paymentDetails.payeeName);
     await this.payeeAddressStreetInput.fill(paymentDetails.payeeStreet);
@@ -62,6 +70,10 @@ export class BillPayPage {
     await this.sendPaymentButton.click();
   }
 
+  /**
+   * Verifies if the payment was successful by checking the visibility of the "Bill Payment Complete" heading.
+   * @returns {boolean} - Returns true if the success message is visible.
+   */
   async verifyPaymentSuccess() {
     await this.paymentSuccessHeading.waitFor();
     return this.paymentSuccessHeading.isVisible();
