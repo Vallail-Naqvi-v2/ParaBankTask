@@ -16,7 +16,6 @@ export class BillPayPage {
   readonly page: Page;
 
   private sendPaymentButton: Locator;
-  private billPayLink: Locator;
   private payeeNameInput: Locator;
   private payeeAddressStreetInput: Locator;
   private payeeAddressCityInput: Locator;
@@ -27,6 +26,7 @@ export class BillPayPage {
   private verifyAccountInput: Locator;
   private amountInput: Locator;
   private paymentSuccessHeading: Locator;
+  private billPayLink: Locator;
 
   constructor(page: Page) {
     this.page = page;

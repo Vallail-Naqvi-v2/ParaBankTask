@@ -1,5 +1,8 @@
 import { Locator, Page } from "@playwright/test";
 
+/**
+ * @author Vallail N
+ */
 export class TransferFundsPage {
   readonly page: Page;
   private amount: Locator;
