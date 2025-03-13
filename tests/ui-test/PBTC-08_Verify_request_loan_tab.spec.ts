@@ -15,7 +15,6 @@ test("PBTC-08 | Verify Request loan tab", async ({ page }) => {
   });
   await test.step("Clicks on the request loan tab", async () => {
     await homePage.goToRequestLoan();
-    await page.pause();
     await requestLoanPage.requestLoan("1000", "15");
     await requestLoanPage.waitForLoanRequestSuccess();
     const successMessage = await page.locator('h1:has-text("Loan Request Processed")');

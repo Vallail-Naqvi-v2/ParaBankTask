@@ -1,0 +1,19 @@
+{
+  "postData": {
+    "title": "To Post this data on to api",
+    "body": "lasdjkachsjkachdkjsachdjkas",
+    "userId": 777
+  },
+  "updatedData": {
+    "title": "Updated Playwright API Testing",
+    "body": "Updated Playwright API automation",
+    "userId": 777
+  },
+  "postId": 10,
+  "expectedResponse": {
+    "id": 10,
+    "title": "Updated Playwright API Testing",
+    "body": "Updated Playwright API automation",
+    "userId": 777
+  }
+}

@@ -51,7 +51,6 @@ export class LoginPage {
     await this.registerButton.click();
   }
   async clickOnLogout() {
-    await this.logoutLink.waitFor();
     await this.logoutLink.click();
   }
 }

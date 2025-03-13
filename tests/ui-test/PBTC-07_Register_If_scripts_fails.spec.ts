@@ -4,7 +4,7 @@ import { USER_DATA } from "../../utils";
 import { RegisterPage } from "../../pages/registerPage";
 import fs from "fs";
 
-test.skip("PBTC-08 | Test to register a new user into the website", async ({ page }) => {
+test("PBTC-08 | Test to register a new user into the website", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const registerPage = new RegisterPage(page);
   await test.step("Register a new user", async () => {
@@ -15,6 +15,5 @@ test.skip("PBTC-08 | Test to register a new user into the website", async ({ pag
     const data = JSON.parse(fs.readFileSync("test-data/registration.json", "utf-8"));
     await registerPage.fillRegistrationForm(data);
     await registerPage.submitForm();
-    await loginPage.clickOnLogout();
   });
 });

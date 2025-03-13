@@ -16,9 +16,10 @@ test("PBTC-09 | Verify update profile page of parabank", async ({ page }) => {
   });
   await test.step("Clicks on the request loan tab", async () => {
     await homePage.goToUpdateProfile();
+    await page.waitForLoadState("networkidle");
     await updateProfilePage.updateLastName("random");
     await updateProfilePage.waitForProfileUpdate();
-    const successMessage = await page.locator('h1:has-text("Profile Updated")');
+    const successMessage = page.locator('h1:has-text("Profile Updated")');
     await expect(successMessage).toBeVisible();
   });
 });
