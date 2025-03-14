@@ -1,5 +1,5 @@
 import { test, expect, request, APIRequestContext } from "@playwright/test";
-import { ApiService } from "../../pages/Api_page";
+import { ApiService } from "../../pages/apiTestPage";
 import fs from "fs";
 
 // data from the JSON file
@@ -22,6 +22,7 @@ test.beforeAll(async () => {
 // GET Request - Fetch all posts and validate structure
 test("GET Request - Fetch all posts and validate structure", async () => {
   const responseData = await apiService.getAllPosts();
+  console.log(responseData);
 
   // Ensure at least one post exists
   expect(responseData.length).toBeGreaterThan(0);

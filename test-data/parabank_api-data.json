@@ -1,0 +1,13 @@
+{
+  "baseURL": "https://parabank.parasoft.com",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, br, zstd",
+    "Accept-Language": "en-US,en;q=0.9,en-IN;q=0.8,ro;q=0.7",
+    "Connection": "keep-alive",
+    "Cookie": "JSESSIONID=E6D37F909067A2659F0E7B007AE3BD9B; __q_state_toaWvavBpa9r2g42=eyJ1dWlkIjoiYTU0NzBjZTktM2JhMS00YzIyLWE5OTQtNTM0ZWQ0M2Y5MzhlIiwiY29va2llRG9tYWluIjoicGFyYXNvZnQuY29tIn0=; _ga_PV26NGPL9C=GS1.1.1741932264.1.0.1741932264.60.0.0; _ga=GA1.1.1512780206.1741932264",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+    "x-requested-with": "XMLHttpRequest",
+    "Referer": "https://parabank.parasoft.com/parabank/overview.htm"
+  }
+}
