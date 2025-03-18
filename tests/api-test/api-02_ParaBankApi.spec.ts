@@ -22,6 +22,9 @@ test.describe("Parabank End-to-End API Test", () => {
     await test.step("Open New Account", async () => {
       await homePage.goToOpenNewAccount();
       await openAccountPage.openNewAccount("1");
+      await openAccountPage.waitForAccountOpened();
+      const heading = await page.locator('h1:has-text("Account Opened!")');
+      await expect(heading).toBeVisible();
     });
 
     // Accounts Overview

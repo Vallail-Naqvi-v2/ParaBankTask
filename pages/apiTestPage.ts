@@ -1,5 +1,4 @@
-import { APIRequestContext, expect } from "@playwright/test";
-import { USER_DATA } from "../utils";
+import { APIRequestContext } from "@playwright/test";
 
 // Class to handle all API requests
 export class ApiService {
@@ -9,35 +8,25 @@ export class ApiService {
     this.apiContext = apiContext;
   }
 
-  // GET Request: Fetch all posts and validate each item
+  // GET Request: Fetch all posts
   async getAllPosts() {
-    const response = await this.apiContext.get("/posts");
-    expect(response.status()).toBe(200);
-
-    const responseData = await response.json();
-    return responseData;
+    return await this.apiContext.get("/posts");
   }
 
   // POST Request: Create a new post
   async createPost(title: string, body: string, userId: number) {
-    const response = await this.apiContext.post("/posts", {
+    return await this.apiContext.post("/posts", {
       data: { title, body, userId },
     });
-    expect(response.status()).toBe(201);
-    return await response.json();
   }
 
   // PUT Request: Update a post
   async updatePost(postId: number, updatedData: { title: string; body: string; userId: number }) {
-    const response = await this.apiContext.put(`/posts/${postId}`, { data: updatedData });
-    expect(response.status()).toBe(200);
-    return await response.json();
+    return await this.apiContext.put(`/posts/${postId}`, { data: updatedData });
   }
 
   // DELETE Request: Delete a post
   async deletePost(postId: number) {
-    const response = await this.apiContext.delete(`/posts/${postId}`);
-    expect(response.status()).toBe(200);
-    return response.status();
+    return await this.apiContext.delete(`/posts/${postId}`);
   }
 }
