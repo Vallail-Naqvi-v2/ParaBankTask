@@ -1,8 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { BillPayPage } from "../../Pages/billPayPage";
-import fs from "fs";
 import { HomePage } from "../../Pages/homePage";
 
 test("PBTC-06 | Verify Bills payments ", async ({ page }) => {
@@ -18,13 +17,14 @@ test("PBTC-06 | Verify Bills payments ", async ({ page }) => {
     expect(logoutbutton).toBe(true);
   });
   await test.step("Verify bill payments", async () => {
-    const data = JSON.parse(fs.readFileSync("test-data/bill-paymentsdata.json", "utf-8"));
+    const data = readJsonFile("test-data/bill-paymentsdata.json");
+    const messages = readJsonFile("test-data/billsverificationdata.json");
+    const expectedSuccessMessage = messages ? messages.successMessage : "";
     await homePage.goToBillPay();
     await billPayPage.verifyBillPayPage();
     await billPayPage.fillBillPaymentDetails(data);
     await billPayPage.verifyPaymentSuccess();
-
-    const successMessage = await page.locator('h1:has-text("Bill Payment Complete")');
-    await expect(successMessage).toBeVisible();
+    const successMessage = await billPayPage.getSuccessMessage();
+    expect(successMessage).toBe(expectedSuccessMessage);
   });
 });

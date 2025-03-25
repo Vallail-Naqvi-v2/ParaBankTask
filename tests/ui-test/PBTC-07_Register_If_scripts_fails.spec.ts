@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { RegisterPage } from "../../pages/registerPage";
 import fs from "fs";
 
@@ -12,7 +12,7 @@ test("PBTC-07 | Test to register a new user into the website", async ({ page }) 
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(1000);
     await loginPage.goToRegisteration();
-    const data = JSON.parse(fs.readFileSync("test-data/registration.json", "utf-8"));
+    const data = readJsonFile("test-data/registration.json");
     await registerPage.fillRegistrationForm(data);
     await registerPage.submitForm();
   });

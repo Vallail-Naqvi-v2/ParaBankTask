@@ -78,4 +78,13 @@ export class BillPayPage {
     await this.paymentSuccessHeading.waitFor();
     return this.paymentSuccessHeading.isVisible();
   }
+  /**
+
+   * @returns the success message
+   */
+  async getSuccessMessage() {
+    const result = await this.paymentSuccessHeading.textContent();
+    console.log(result);
+    return result;
+  }
 }
