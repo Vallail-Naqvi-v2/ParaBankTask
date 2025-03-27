@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { HomePage } from "../../Pages/homePage";
 import { OpenAccountPage } from "../../Pages/openAccountPage";
 
@@ -21,7 +21,10 @@ test("PBTC-04 | Verify User is able to create a new account", async ({ page }) =
     await homePage.goToOpenNewAccount();
     await openAccountPage.openNewAccount("1");
     await openAccountPage.waitForAccountOpened();
-    const heading = await page.locator('h1:has-text("Account Opened!")');
-    await expect(heading).toBeVisible();
+    const heading = readJsonFile("./test-data/expected-response.json");
+    const result = await openAccountPage.returnSucessText();
+    expect(result).toContain(heading.accountoverview);
+    //console.log(result);
+    //console.log(heading.accountoverview);
   });
 });

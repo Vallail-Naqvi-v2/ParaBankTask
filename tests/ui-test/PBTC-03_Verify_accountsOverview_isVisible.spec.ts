@@ -48,7 +48,7 @@ test("PBTC-03 | Verify Accounts Overview page is Visible", async ({ page }) => {
       expect(availableAmount.trim()).not.toBe(""); // Ensure availableAmount is not empty
     }
 
-    const data = readJsonFile("./test-data/account-overview-table-text.json");
+    const data = readJsonFile("./test-data/expected-response.json");
     const footerText = await accountsOverViewPage.getFooterText();
     expect(footerText).toContain(data.message);
   });

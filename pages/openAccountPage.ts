@@ -1,10 +1,12 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class OpenAccountPage {
   readonly page: Page;
+  private accountOpenedMsg: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.accountOpenedMsg = page.locator("#openAccountResult .title");
   }
 
   // Method to open a new account
@@ -18,5 +20,8 @@ export class OpenAccountPage {
   async waitForAccountOpened() {
     await this.page.waitForSelector("#newAccountId"); // Ensure the new account ID is available
     await this.page.waitForSelector('h1:has-text("Account Opened!")'); // Wait for the heading text
+  }
+  async returnSucessText() {
+    return this.accountOpenedMsg.allTextContents();
   }
 }
