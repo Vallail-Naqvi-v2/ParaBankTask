@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { AccountsOverviewPage } from "../../pages/accountsOverviewPage";
 import { HomePage } from "../../Pages/homePage";
 
@@ -48,8 +48,8 @@ test("PBTC-03 | Verify Accounts Overview page is Visible", async ({ page }) => {
       expect(availableAmount.trim()).not.toBe(""); // Ensure availableAmount is not empty
     }
 
-    // Check if the footer text exists (optional)
+    const data = readJsonFile("./test-data/account-overview-table-text.json");
     const footerText = await accountsOverViewPage.getFooterText();
-    expect(footerText).toContain("*Balance includes deposits that may be subject to holds");
+    expect(footerText).toContain(data.message);
   });
 });

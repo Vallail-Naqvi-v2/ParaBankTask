@@ -2,7 +2,6 @@ import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
 import readJsonFile, { USER_DATA } from "../../utils";
 import { RegisterPage } from "../../pages/registerPage";
-import fs from "fs";
 
 test("PBTC-07 | Test to register a new user into the website", async ({ page }) => {
   const loginPage = new LoginPage(page);
