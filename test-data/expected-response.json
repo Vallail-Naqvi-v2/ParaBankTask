@@ -1,5 +1,7 @@
 {
   "message": "*Balance includes deposits that may be subject to holds",
   "accountoverview": "Account Opened!",
-  "transferFunds": "Transfer Complete!"
+  "transferFunds": "Transfer Complete!",
+  "requestLoan": "Loan Request Processed",
+  "updateProfile": "Profile Updated"
 }

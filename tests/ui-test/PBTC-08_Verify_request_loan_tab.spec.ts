@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { HomePage } from "../../Pages/homePage";
 import { RequestLoanPage } from "../../Pages/requestLoanPage";
 
@@ -17,7 +17,8 @@ test("PBTC-08 | Verify Request loan tab", async ({ page }) => {
     await homePage.goToRequestLoan();
     await requestLoanPage.requestLoan("1000", "15");
     await requestLoanPage.waitForLoanRequestSuccess();
-    const successMessage = await page.locator('h1:has-text("Loan Request Processed")');
-    await expect(successMessage).toBeVisible();
+    const successMessage = await requestLoanPage.returnSuccessMessage();
+    const expectedResponse = readJsonFile("./test-data/expected-response.json");
+    expect(successMessage).toContain(expectedResponse.requestLoan);
   });
 });

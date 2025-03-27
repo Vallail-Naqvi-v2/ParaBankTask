@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { HomePage } from "../../Pages/homePage";
 import { UpdateProfilePage } from "../../Pages/updateProfilePage";
 
@@ -19,7 +19,8 @@ test("PBTC-09 | Verify update profile page of parabank", async ({ page }) => {
     await page.waitForLoadState("networkidle");
     await updateProfilePage.updateLastName("random");
     await updateProfilePage.waitForProfileUpdate();
-    const successMessage = page.locator('h1:has-text("Profile Updated")');
-    await expect(successMessage).toBeVisible();
+    const successMessage = await updateProfilePage.returnSuccessMessage();
+    const expectedResponse = readJsonFile("./test-data/expected-response.json");
+    expect(successMessage).toContain(expectedResponse.updateProfile);
   });
 });

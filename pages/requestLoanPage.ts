@@ -28,4 +28,8 @@ export class RequestLoanPage {
   async waitForLoanRequestSuccess() {
     await this.loanRequestSuccessMessage.waitFor({ state: "visible" });
   }
+  async returnSuccessMessage() {
+    const result = await this.loanRequestSuccessMessage.allTextContents();
+    return result;
+  }
 }
