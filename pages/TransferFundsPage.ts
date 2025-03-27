@@ -10,6 +10,7 @@ export class TransferFundsPage {
   private toAccount: Locator;
   private submitButton: Locator;
   private successMessage: Locator;
+  private transferCompleteLocator: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +19,7 @@ export class TransferFundsPage {
     this.toAccount = page.locator("select#toAccountId");
     this.submitButton = page.locator('input[type="submit"]');
     this.successMessage = page.locator("#rightPanel:has-text('Transfer Complete!')");
+    this.transferCompleteLocator = page.locator("#showResult .title");
   }
 
   async transferFunds(amount: string, fromAccountIndex: string, toAccountIndex: string) {
@@ -37,5 +39,9 @@ export class TransferFundsPage {
 
   async verifyTransferSuccess() {
     await this.successMessage.waitFor({ state: "visible" });
+  }
+  async returnSuccessMsg() {
+    const result = await this.transferCompleteLocator.allTextContents();
+    return result;
   }
 }

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../../Pages/loginPage";
-import { USER_DATA } from "../../utils";
+import readJsonFile, { USER_DATA } from "../../utils";
 import { HomePage } from "../../Pages/homePage";
 import { TransferFundsPage } from "../../pages/transferFundsPage";
 
@@ -21,7 +21,8 @@ test("PBTC-05 | Verify transfer funds page", async ({ page }) => {
     await homePage.goToTransferFunds();
     await transferFundsPage.transferFunds("1000", "1", "1");
     await transferFundsPage.verifyTransferSuccess();
-    const successMessage = await page.locator("#rightPanel:has-text('Transfer Complete!')");
-    await expect(successMessage).toBeVisible();
+    const successMessage = await transferFundsPage.returnSuccessMsg();
+    const expectedResponse = readJsonFile("./test-data/expected-response.json");
+    expect(successMessage).toContain(expectedResponse.transferFunds);
   });
 });
