@@ -18,8 +18,8 @@ test("PBTC-06 | Verify Bills payments ", async ({ page }) => {
   });
   await test.step("Verify bill payments", async () => {
     const data = readJsonFile("test-data/bill-paymentsdata.json");
-    const messages = readJsonFile("test-data/billsverificationdata.json");
-    const expectedSuccessMessage = messages ? messages.successMessage : "";
+    const messages = readJsonFile("test-data/expected-response.json");
+    const expectedSuccessMessage = messages ? messages.successMessageBills : "";
     await homePage.goToBillPay();
     await billPayPage.verifyBillPayPage();
     await billPayPage.fillBillPaymentDetails(data);

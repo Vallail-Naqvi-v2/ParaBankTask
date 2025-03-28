@@ -3,5 +3,6 @@
   "accountoverview": "Account Opened!",
   "transferFunds": "Transfer Complete!",
   "requestLoan": "Loan Request Processed",
-  "updateProfile": "Profile Updated"
+  "updateProfile": "Profile Updated",
+  "successMessageBills": "Bill Payment Complete"
 }
